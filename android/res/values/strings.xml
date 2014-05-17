@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hit the Zombie</string>
+
+    <string name="quality">Quality</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
+
+    <string name="sound">Sound</string>
+    <string name="theme">Theme</string>
+    <string name="zombie">Zombie</string>
+    <string name="cat">Cat</string>
+    <string name="reset_score">Reset Score</string>
+    <string name="vibrate">Vibrate</string>
+
+    <string name="on">on</string>
+    <string name="off">off</string>
+
+    <string name="score">Score</string>
+    <string name="sec">sec</string>
+    <string name="highscore">Highscore</string>
+</resources>
