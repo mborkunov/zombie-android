@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jelastic.energy</groupId>
     <artifactId>com.jelastic.energy.zombie</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>LATEST-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Reactor</name>
 
