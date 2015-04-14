@@ -1,31 +1,28 @@
 package com.jelastic.energy.zombie.core.actors
 
-import com.badlogic.gdx.scenes.scene2d.Actor
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.graphics.{Mesh, Color}
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.Batch
+import com.badlogic.gdx.scenes.scene2d.ui.Image
 
-class Indicator extends Actor {
+class Indicator extends Image(new Texture(Gdx.files.internal("gfx/zombie/indicator.png"))) {
 
-  private var progress: Float = 0
-  val shapeRenderer = new ShapeRenderer()
+  private var progress: Float = 1
 
-  override def draw(batch: SpriteBatch, parentAlpha: Float) {
-    val xOffset = getParent.getWidth * .2
-    val yOffset = getParent.getHeight * .6
+  setHeight(3)
+  setWidth(50)
+  var angle = 0
 
-    val width = getParent.getWidth * .6
-    val height = getParent.getHeight * .2
-
-    shapeRenderer.setColor(Color.RED)
-    shapeRenderer.begin(ShapeType.Filled)
-    shapeRenderer.rect(xOffset.toFloat, yOffset.toFloat, width.toFloat, height.toFloat)
-    shapeRenderer.end()
+  override def draw(batch: Batch, parentAlpha: Float) {
+    setOrigin(getWidth / 2, 0)
+    setPosition(getParent.getWidth / 2 - getWidth / 2, 13)
+    setScaleX(math.sin(angle * math.Pi / 180f).toFloat)
+    if (!getParent.asInstanceOf[Target].front)
+      super.draw(batch, parentAlpha)
   }
 
   override def act(delta: Float) {
-    progress += .1f
+    angle = angle + 1
+    //progress += .1f
   }
 }
