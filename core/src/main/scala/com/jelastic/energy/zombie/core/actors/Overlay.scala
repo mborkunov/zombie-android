@@ -4,12 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.{Batch, Sprite}
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.graphics.{GL20, Texture}
-import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d._
-import com.badlogic.gdx.scenes.scene2d.utils.Align
-import com.badlogic.gdx.utils.Timer
-import com.badlogic.gdx.utils.Timer.Task
-import com.jelastic.energy.zombie.core.{Application, Audio}
 
 class Overlay(layout: Layout, game: Game) extends Group {
 
@@ -62,9 +57,7 @@ class Overlay(layout: Layout, game: Game) extends Group {
   }
 
   override def hit(x: Float, y: Float, touchable: Boolean): Actor = {
-    for (child: Actor <- getChildren.begin()) {
-      if (child.hit(x, y, touchable) != null) return child
-    }
-    if (x > 0 && x < layout.width && y > 0 && y < layout.height) this else null
+    val child = getChildren.begin().filter(_ ne null).find(_.hit(x, y, touchable) ne null)
+    child.getOrElse(if (x > 0 && x < layout.width && y > 0 && y < layout.height) this else null)
   }
 }

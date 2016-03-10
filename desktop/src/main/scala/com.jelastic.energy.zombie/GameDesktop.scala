@@ -7,8 +7,8 @@ import com.jelastic.energy.zombie.core.Application
 object GameDesktop extends App {
     val config: LwjglApplicationConfiguration = new LwjglApplicationConfiguration
     config.useGL30 = false
-    config.width = 1920
-    config.height = 1280
+    config.width = 1280
+    config.height = 800
     config.fullscreen = false
     config.vSyncEnabled = true
 

@@ -21,10 +21,8 @@ class BattleField(layout: Layout) extends Group {
       // order to rotate random targets
       val sleeping: List[Target] = targets.filter(!_.rotating)
 
-      sleeping.filter(_.front).foreach(target => {
-        if (math.random < .005) {
-          target.rotate((math.random * 3).round.toByte)
-        }
+      sleeping.filter(_.front && math.random < .005).foreach(target => {
+        target.rotate((math.random * 3).round.toInt)
       })
     } else {
       val active: List[Target] = targets.filter(p => p.rotating || p.front)

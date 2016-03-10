@@ -29,7 +29,6 @@ class Game(viewport: Viewport) extends Group {
   addActor(battleField)
   addActor(overlay)
 
-
   def start() {
     running = true
     Timer.schedule(new Task {
